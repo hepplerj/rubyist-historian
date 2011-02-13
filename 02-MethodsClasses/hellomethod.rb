@@ -1,17 +1,15 @@
-#!usr/bin/ruby -w
+#!/usr/bin/ruby -w
 
 # hellomethod.rb
 
-# defining function 'hello' to ask 
+# defining functon 'hello' to ask
 # for parameter 'name'
+
 def hello(name)
-    puts "Hello, #{name}!"
+    'Hello ' + name
 end
 
 puts "Please enter your name: "
+name = gets.chomp
 
-# get the variable and chomp
-name = gets().chomp()
-
-# print results
-foo = hello(name)
+puts hello(name)
