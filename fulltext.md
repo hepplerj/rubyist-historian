@@ -1,9 +1,15 @@
 # The Rubyist Historian
 ## Ruby Programming for Humanities Scholars
 
-Coming off my recent post on <a href="http://www.jasonheppler.org/2010/12/03/how-i-learned-code.html">How I Learned Code</a>, I've decided to write a series of blog posts that will introduce historians to the basics of Ruby that I will eventually publish as a free <a href="http://anthologize.org/">ebook</a>. My hope is to write an accessible introduction to Ruby and demonstrate not only how to write small programs but also think about ways programming can help scholars in their everyday tasks. Although I'm aiming this at historians, my hope is that anyone interested in humanist computing (or Ruby in general) will find this useful. Watch here, follow me on <a href="http://www.twitter.com/jaheppler">Twitter</a>, or <a href="http://feeds.feedburner.com/JasonHeppler">subscribe</a> to catch updates as I produce them.
+In late 2010 I wrote a post on [how I learned code](http://www.jasonheppler.org/2010/12/03/how-i-learned-code.html). I was, simultaneously, enrolled in ENGL4/878: Electronic Text with Professor Stephen Ramsay, where part of the course was about learning the Ruby programming language and how we could apply programming to humanistic data. The course, it turns out, was a sort of pivot moment for me. Although I had always been something of a computer geek, programming was something I had not touched since high school. But after the course I became captured by the power that programming can offer humanities scholars. In an age of Big Data, from Google Books to ever-growing cultural heritage digitized by libraries, museums, and centers, we have at our hands a vast array of material that can be manipulated, queried, browsed, and visualized through computational methods. When the course was finished, I decided to write a series of blog posts for others who might be interested in applying Ruby to humanistic questions. The result was the seven write-ups below.
 
-You can find copies of code examples in the <a href="https://github.com/hepplerj/rubyist-historian">Rubyist Historian Github repository</a>. The blog series will be available as a free Anthologize ebook download once it's completed.
+The original post promised that the series would be released as an electronic book. At the time I wrote the series I was running WordPress and the plugin [Anthologize](http://anthologize.org/) had recently been released. Shortly after, however, I switched blog platforms to Jekyll and, as other projects demanded my attention, I never got around to pushing the material into a format beyond my blog posts.
+
+But I had a new idea. Instead of pushing out a static project as a PDF or epub format I decided to host things dynamically. Starting today (2012-05-21) I am pushing all posts to Github and hosting the series on Github pages. Anyone interested can now download a copy of The Rubyist Historian to use.
+
+I want more, however. As a bit of an experiment in open publishing, I've decided to open source The Rubyist Historian for public contributions. People are free to fork The Rubyist Historian and offer corrections, clearer (or better, or more) examples, and overall contribute to what I want to become a collaborative project and reference for humanities scholars looking to get started with Ruby programming.
+
+As before, copies of the example code (and now the full text) can be found at the [Rubyist Historian Github repository](https://github.com/hepplerj/rubyist-historian).
 
 ### Contents
 
@@ -15,6 +21,8 @@ You can find copies of code examples in the <a href="https://github.com/hepplerj
 6. [Randomness](http://www.jasonheppler.org/2011/01/08/the-rubyist-historian-iteration-recursion-and-other-randomness.html)
 7. [Our First Program](http://www.jasonheppler.org/2011/01/12/the-rubyist-historian-our-first-program.html)
 
+*Note the links above return you to my website. Use the Github pages navigation to the left to jump to sections.*
+
 ### Acknowledgements
 
 The structure, examples, and topics that comprise this blog series are directly inspired by and drawn from Prof. Stephen Ramsay's course ENGL 4/878: Electronic Text, which I took during the Fall 2010 term at the University of Nebraska-Lincoln. Thanks, Steve, for encouraging the hacker in all of us. Any mistakes, errors, or lousy explanations are my responsibility alone.
@@ -22,7 +30,7 @@ The structure, examples, and topics that comprise this blog series are directly 
 Many thanks to additional resources I consulted for example ideas and help with explanations. These resources include Dave Thomas, *[Programming Ruby 1.9: The Pragmatic Programmer's Guide](http://www.amazon.com/gp/product/1934356085?ie=UTF8&tag=jasohepp-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1934356085)*, [The Unofficial Ruby Usage Guide](http://www.caliban.org/ruby/rubyguide.shtml), and [Ruby Inside](http://www.rubyinside.com/). Other resources are included with each section.
 
 
-## The Rubyist Historian: Getting Started
+## Getting Started
 
 The purpose of this ebook is to provide a brief overview of the Ruby programming language and consider ways Ruby (or any other programming language) can be applied to the day-to-day operations of humanities scholars. Once you complete this book, you should have a good understanding of Ruby basics, be able to complete basic tasks with Ruby, and hopefully leave with a solid basis that will allow you to continue learning.
 
@@ -171,8 +179,7 @@ There you go! Your first Ruby program that works with user data. Up next, we're 
 - [Ruby in Twenty Minutes](http://www.ruby-lang.org/en/documentation/quickstart/)
 - [Understanding Ruby Basics](http://patcanella.com/post/2134954107/understanding-ruby-basics)
 
-## The Rubyist Historian: Methods and Classes"
-
+## Methods and Classes
 
 In our last section I introduced some Ruby programming basics. Now we're moving in to methods and classes.
 
@@ -256,7 +263,7 @@ Note also that we redefined the <code>to string (.to_s)</code> type cast as well
 
 - [Ruby Class Tutorial](http://juixe.com/techknow/index.php/2007/01/22/ruby-class-tutorial/), Juixe Techknow
 
-## The Rubyist Historian: Loops and Control Structures
+## Loops and Control Structures
 
 Our last segment introduced us to Ruby methods and classes. This section will introduce you to expressions and loops. Loops are, put simply, a test of whether an expression is true or false. This is the basic way that computer's operate: continue following a set of instructions until the expression becomes true, then end or move on to the next set of instructions.
 
@@ -395,8 +402,7 @@ As extra reading, I would check out Steve Ramsay's <a href="http://etext.lib.vir
 - [A Wealth of Ruby Loops and Iterators](http://www.skorks.com/2009/09/a-wealth-of-ruby-loops-and-iterators), Shorks
 - [Control Structures](http://www.rubyist.net/~slagell/ruby/control.html), Rubyist
 
-## The Rubyist Historian: Arrays and Hashes"
-
+## Arrays and Hashes
 
 To review, we've learned how to create functions, call upon methods, create classes, and generate basic programs in Ruby. We'll now be moving into creating arrays and hashes.
 
@@ -521,7 +527,7 @@ Hashes have one significant advantage over arrays: they use any object as an ind
 - [Memo #3: Advanced usage of Ruby hashes and arrays](http://kpumuk.info/ruby-on-rails/memo-3-advanced-usage-of-ruby-hashes-and-arrays/), Dmytro Shteflyuk
 - [Ruby Hash](http://programmingbulls.com/ruby-hash), Programming Bulls
 
-## The Rubyist Historian: Working With Advanced Data
+## Working With Advanced Data
 
 In this section, a whole new world of programing is about to open before your eyes. So far, we've been working with simple data inputs through the use of .gets(), but the method only allows us to call upon a single data entry. What would be infinitely more useful would be the ability to read files outside the program. We can do this with Ruby's <code>File</code> class.
 
@@ -577,7 +583,7 @@ You now know how to read and write files. A whole new world of programming shoul
 - [Read/Write Files](http://www.codingfriends.com/index.php/2009/07/28/readwrite-files-3/), Coding Friends
 - [Working with Files in Ruby](http://www.techotopia.com/index.php/Working_with_Files_in_Ruby), Techtopia
 
-## The Rubyist Historian: Randomness
+## Randomness
 
 We're entering the final leg of our journey. We've covered a lot of topics in the last few sections, but I just have a couple of things to touch on before we move on to writing our first full program together.
 
@@ -719,7 +725,7 @@ Now that you have the basics, you might want to learn more and start creating aw
 
 Next up, we're writing a program together. We're going to build a word frequency generator and begin working with the web.
 
-## The Rubyist Historian: Our First Program
+## Our First Program
 
 "Okay, Jason," you're asking yourself, "I'm tired of saying hello and counting numbers and doing mathematics. How can Ruby be applied to my work as a humanities scholar?" I'm thrilled you asked! Because today, we're writing our first full program together. I'll warn you, this might be a long read and a lot of writing. But I'm hoping by doing this we experience the process of designing, planning, writing code, optimizing code, debugging, and finally using the program.
 
