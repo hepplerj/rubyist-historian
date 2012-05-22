@@ -1,8 +1,8 @@
-# Rubyist Historian Material
+# The Rubyist Historian
 
 This repository contains evolving content used as introductory teaching material for the Rubyist Historian ebook project by Jason A. Heppler ([http://jasonheppler.org](http://jasonheppler.org)).
 
-The full text of The Rubyist Historian can be viewed at Github pages: [http://hepplerj.github.com/rubyist-historian](http://hepplerj.github.com/rubyist-historian).
+The full text of The Rubyist Historian can be viewed at Github pages: [http://hepplerj.github.com/rubyist-historian](http://hepplerj.github.com/rubyist-historian). The material on my website will not be updated. Any updates, changes, additions, etc. to Rubyist will happen here at Github instead.
 
 # Copyright & Licensing
 
