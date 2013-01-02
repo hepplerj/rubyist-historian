@@ -85,52 +85,40 @@
 
 <p>All programming languages, like any foreign language, necessarily contain a learning curve. For example, we could compare PHP with Ruby: they have similar structures, syntaxes, and the like, but PHP sometimes throws in syntaxes that require careful distinctions (the difference between <code>sprintf</code> and <code>printf</code>). I believe that simplicity in the syntax of a language makes a huge difference in beginning programmers to grasp concepts. I also greatly appreciate Ruby's simplicity. I'm going to jump slightly ahead for the sake of making a comparison. Let us say we wanted to create an array of authors for a bibliographic program. In PHP, you might write:</p>
 
-<div class="highlight">
-<pre><span class="x">$authors = array("Hemingway" =&gt; 3, "Dickinson" =&gt; 1, "Whitman" =&gt; 2);</span>
-<span class="x">$keys = array_keys($authors);</span>
-<span class="x">sort($keys);</span>
-<span class="x">$sorted = array_slice($keys, 0, 3);</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="nv">$authors</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"Hemingway"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"Dickinson"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Whitman"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nv">$keys</span> <span class="o">=</span> <span class="nb">array_keys</span><span class="p">(</span><span class="nv">$authors</span><span class="p">);</span>
+<span class="nb">sort</span><span class="p">(</span><span class="nv">$keys</span><span class="p">);</span>
+<span class="nv">$sorted</span> <span class="o">=</span> <span class="nb">array_slice</span><span class="p">(</span><span class="nv">$keys</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</pre></div>
 
 <p>We can achieve the same thing in Ruby much more simply:</p>
 
-<div class="highlight">
-<pre><span class="n">authors</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">"Hemingway"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"Dickinson"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Whitman"</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">}</span>
+<div class="highlight"><pre><span class="n">authors</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">"Hemingway"</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"Dickinson"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"Whitman"</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">}</span>
 <span class="n">sorted</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Don't worry so much here about what exactly is going on, we'll get to that later. But notice how much easier this is to read. This has something to do with Ruby being a pure OOP (object-oriented programming) language versus PHP's bolt-on functionality. The result is Ruby code that is much more readable. But we're getting ahead of ourselves. The point here is to illustrate the simplicity of the Ruby language.</p>
 
 <p>Ruby also handles blocks well. Once again, lets compare PHP and Ruby. Imagine we wanted to sort a list of authors. In PHP, we would write:</p>
 
-<div class="highlight">
-<pre><span class="x">function sort_authors_by_count($a, $b)</span>
-<span class="x"> {</span>
-<span class="x">   if($a -&gt; counts == $b -&gt; counts)</span>
-<span class="x">   {</span>
-<span class="x">     return 0;</span>
-<span class="x">   }</span>
-<span class="x">   return($a -&gt; counts &gt; $b -&gt; counts) ? +1 : -1;</span>
-<span class="x"> }</span>
+<div class="highlight"><pre><span class="k">function</span> <span class="nf">sort_authors_by_count</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span>
+ <span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="nv">$a</span> <span class="o">-&gt;</span> <span class="na">counts</span> <span class="o">==</span> <span class="nv">$b</span> <span class="o">-&gt;</span> <span class="na">counts</span><span class="p">)</span>
+   <span class="p">{</span>
+     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">return</span><span class="p">(</span><span class="nv">$a</span> <span class="o">-&gt;</span> <span class="na">counts</span> <span class="o">&gt;</span> <span class="nv">$b</span> <span class="o">-&gt;</span> <span class="na">counts</span><span class="p">)</span> <span class="o">?</span> <span class="o">+</span><span class="mi">1</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+ <span class="p">}</span>
 
-<span class="x"> usort($authors, "sort_authors_by_count");</span>
-</pre>
-</div>
-
+ <span class="nb">usort</span><span class="p">(</span><span class="nv">$authors</span><span class="p">,</span> <span class="s2">"sort_authors_by_count"</span><span class="p">);</span>
+</pre></div>
 
 <p>Ruby blocks are chunks of code between <code>do . . . end</code>. The Ruby syntax would look like this:</p>
 
-<div class="highlight">
-<pre><span class="n">authors</span><span class="o">.</span><span class="n">sort</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span>
+<div class="highlight"><pre><span class="n">authors</span><span class="o">.</span><span class="n">sort</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">|</span>
    <span class="n">a</span><span class="o">.</span><span class="n">counts</span> <span class="o">&lt;=&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">counts</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Once again, Ruby is much simpler. Even if you're not exactly sure what is happening, it is much easier to look up the Ruby syntax of <code>&lt;=&gt;</code> rather than try and decipher <code>? +1 : -1</code>.</p>
 
@@ -154,44 +142,31 @@
 
 <p>Continuing with our comparative approach, generating "hello world" is a fairly straightforward process in many languages. In PHP, it looks like this:</p>
 
-<div class="highlight">
-<pre><span class="x">print("Hello world");</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s2">"Hello world"</span><span class="p">);</span>
+</pre></div>
 
 <p>Ruby operates similarly:</p>
 
-<div class="highlight">
-<pre><span class="nb">puts</span> <span class="s2">"Hello world"</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="nb">puts</span> <span class="s2">"Hello world"</span>
+</pre></div>
 
 <p>If you're running this in the interactive Ruby shell, you should see something like this:</p>
 
-<div class="highlight">
-<pre><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">001</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="nb">puts</span> <span class="s2">"Hello world"</span>
+<div class="highlight"><pre><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">001</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span> <span class="nb">puts</span> <span class="s2">"Hello world"</span>
 <span class="no">Hello</span> <span class="n">world</span>
 <span class="o">=&gt;</span> <span class="kp">nil</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>If you're running Ruby files off a server or local disk, save the file as <code>hello.rb</code> and in the terminal run:</p>
 
-<div class="highlight">
-<pre><span class="go">ruby hello.rb</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="go">ruby hello.rb</span>
+</pre></div>
 
 <p>Note the lack of parens in my <code>puts</code> function. Parentheses are absolutely accepted Ruby syntax, but you must make a choice between a parens or a space. <code>puts("Hello world")</code> and <code>puts "Hello world"</code> are the same thing, but you cannot do <code>puts ("Hello world")</code>. I tend to leave out parentheses unless I'm passing variables through a method.</p>
 
 <p>It is common practice to also include the "shebang" notation (<code>#!</code>) in the first line of the program, followed by introductory comments that usually include the name of the file, a description of what the program does, who wrote it and for what, and when it was last modified. Commented text is marked by <code>#</code>. For example, a "hello world" program might look like this:</p>
 
-<div class="highlight">
-<pre><span class="c1">#!/usr/bin/ruby -w</span>
+<div class="highlight"><pre><span class="c1">#!/usr/bin/ruby -w</span>
 
 <span class="c1"># helloworld.rb</span>
 <span class="c1">#</span>
@@ -204,29 +179,21 @@
 
 <span class="nb">puts</span> <span class="s2">"Hello, world!"</span>
 <span class="nb">puts</span> <span class="s2">"I became a Ruby programmer on </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Running <code>ruby helloworld.rb</code> in the terminal will return:</p>
 
-<div class="highlight">
-<pre><span class="go">Hello, world!</span>
+<div class="highlight"><pre><span class="go">Hello, world!</span>
 <span class="go">I became a Ruby programmer on Tue Dec 28 21:21:43 -0600 2010</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>And there you have it, your first Ruby program! But let's make things a little more interesting. Instead of just pushing static data, let's have Ruby work with data we give it through what's known as <a href="http://en.wikipedia.org/wiki/Standard_streams">standard streams</a>. For this we're going to use the methods gets() and chomp():</p>
 
-<div class="highlight">
-<pre><span class="nb">puts</span> <span class="s2">"Please enter your name: "</span>
+<div class="highlight"><pre><span class="nb">puts</span> <span class="s2">"Please enter your name: "</span>
 <span class="nb">name</span> <span class="o">=</span> <span class="nb">gets</span><span class="p">()</span><span class="o">.</span><span class="n">chomp</span><span class="p">()</span>
 
 <span class="nb">puts</span> <span class="s2">"I, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">, began learning Ruby code on </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="si">}</span><span class="s2">."</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>This will print to the screen:</p>
 
@@ -250,20 +217,16 @@
 
 <p>Notations like <code>gets()</code> and <code>chomp()</code> are called <strong>methods</strong>. In our above example, <code>gets()</code> accepts a single line of data from the user and assigns the string to <code>name</code>. So how can we know what methods are available to us as programmers? The all-knowing, all-powerful <a href="http://www.ruby-doc.org/">Ruby Docs</a>. <code>gets</code> and <code>chomp</code> barely scratch the surface. We can do things like count the number of characters or lines in a string or file, reverse the lines of a string or file, cut a string apart and join it in alphabetical order, or operate all methods on it at once. For example:</p>
 
-<div class="highlight">
-<pre><span class="nb">puts</span> <span class="s2">"I am a Rubyist Historian"</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="c1">#=&gt; 24</span>
+<div class="highlight"><pre><span class="nb">puts</span> <span class="s2">"I am a Rubyist Historian"</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="c1">#=&gt; 24</span>
 <span class="nb">puts</span> <span class="s2">"Learning some Ruby-fu"</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="c1">#=&gt; uf-ybuR emos gninraeL</span>
 <span class="nb">puts</span> <span class="s2">"Ruby is fracking awesomesauce."</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">()</span> <span class="c1">#=&gt;  .Raaabcceeefgiikmnorsssuuwy</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Run this in the terminal and you should get the commented results. For the first example, we would technically say that we are <em>invoking the length method on object "I am a Rubyist Historian."</em> (Or, even more abstractly, "I am a Rubyist Historian" is an <em>object of type string</em>.) Everything before the period is the <strong>receiver</strong> while everything after the period indicates the <strong>method(s)</strong> you wish to invoke upon the object.</p>
 
 <p>We can also create methods. We'll return to our original "hello, name" program. But this time we're going to write our own method and invoke it. Methods are defined with the keyword <code>def</code> followed by the method name and the method's parameters between parentheses (parentheses here are optional, but I use them for readability's sake. Remember, if you do not use parentheses you need to have a single space in its place, e.g., <code>name hello</code> is the same as <code>name(hello)</code>). So to build a new "hello, name" program using a defined method, we could write:</p>
 
-<div class="highlight">
-<pre><span class="c1"># defining function 'hello' to ask</span>
+<div class="highlight"><pre><span class="c1"># defining function 'hello' to ask</span>
 <span class="c1"># for parameter 'name'</span>
 <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
   <span class="s1">'Hello '</span> <span class="o">+</span> <span class="nb">name</span>
@@ -273,9 +236,7 @@
 <span class="nb">name</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
 
 <span class="nb">puts</span> <span class="n">hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>NB: Indentations does not matter to Ruby, but for readability's sake, we include them.</p>
 
@@ -289,20 +250,16 @@
 
 <p>Let's say you wanted a program that allowed you to input author names and ISBNs. First we define the class starting off the definition with <code>class</code> followed by the class name, capitalized:</p>
 
-<div class="highlight">
-<pre><span class="k">class</span> <span class="nc">Books</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Books</span>
   <span class="c1"># . . .</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>We'll use the <code>initialize</code> method here, which allows programmers to set the state of constructed objects. We store these as <strong>instance variables</strong> inside the object, which we incidate through the use of the <code>@</code> symbol. This makes variables visible within a class -- this is <strong>not</strong> a global variable. But the instance variables means we can allow each object to have its own unique state. <code>initialize</code> is a special method in Ruby. Ruby allocates memory to hold <code>uninitialized</code> objects and then calls the object's <code>initialize</code> method. The method passes any parameters that were passed to <code>new</code>. </p>
 
 <p>Enough talk, let's write the code and explain things further:</p>
 
-<div class="highlight">
-<pre><span class="k">class</span> <span class="nc">Books</span>
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Books</span>
 
   <span class="kp">attr_accessor</span> <span class="ss">:fname</span><span class="p">,</span> <span class="ss">:lname</span><span class="p">,</span> <span class="ss">:isbn</span>
 
@@ -320,9 +277,7 @@
 
 <span class="n">author</span> <span class="o">=</span> <span class="no">Books</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"Walt"</span><span class="p">,</span> <span class="s2">"Whitman"</span><span class="p">,</span> <span class="s2">"1234567890"</span><span class="p">)</span>
 <span class="nb">puts</span> <span class="n">author</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>What we've done here is passed the instance variables <code>@fname</code>, <code>@lname</code>, and <code>@isbn</code> a string by calling the class constructor <code>Books</code> (<code>Books.new("Walt", "Whitman", "1234567890")</code>). We could just as easily said <code>Books.new("William", "Shakespeare", "1234567890")</code>. Note that <code>attr_accessor</code> is not declaring an instance variable, it's only creating the accessor methods. Ruby decouples instance variables and accessor methods.</p>
 
@@ -343,28 +298,22 @@
 
 <p>Let's say we needed a program that printed numbers until it reached five. In this case, we want the program to print a number, evaluate whether that number is equal to five, if not add one and run the program again. Once the number is equal to five, the program terminates. We achieve this through the use of the <code>while . . . end</code> loop:</p>
 
-<div class="highlight">
-<pre><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">5</span>
   <span class="nb">puts</span> <span class="n">num</span>
   <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Running <code>ruby loop.rb</code> in the terminal will produce:</p>
 
-<div class="highlight">
-<pre><span class="go">0</span>
+<div class="highlight"><pre><span class="go">0</span>
 <span class="go">1</span>
 <span class="go">2</span>
 <span class="go">3</span>
 <span class="go">4</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Note the <code>+=</code> above. This symbol is called an <strong>operator</strong>, which allow us to compare values.</p>
 
@@ -399,8 +348,7 @@
 
 <p>The <code>if . . . else</code> loop allows us to evaluate several branches of code in the order we write it. If the first branch is false, the program moves on to the next and the next and so on until the value is true and terminates the program. We could write a program that evaluates what a user thinks about the quality of a book, for example:</p>
 
-<div class="highlight">
-<pre><span class="nb">puts</span> <span class="s2">"Enter a rating between one and five: "</span>
+<div class="highlight"><pre><span class="nb">puts</span> <span class="s2">"Enter a rating between one and five: "</span>
 
 <span class="c1"># we use .to_i to convert the string to an integer</span>
 <span class="n">rank</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">to_i</span>
@@ -412,9 +360,7 @@
 <span class="k">elsif</span> <span class="n">rank</span> <span class="o">&lt;=</span> <span class="mi">2</span>
   <span class="nb">puts</span> <span class="s2">"The book stinks."</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Pro Tip: If you get stuck in a loop and the terminal won't quit printing to the screen, hit CTRL+C. CTRL+C tells the terminal to stop whatever it's working on.</p>
 
@@ -422,44 +368,32 @@
 
 <p>So far we've looked at some pretty primitive versions of loop constructs. Unlike Java, C, and C++, Ruby doesn't have a <code>for</code> loop. Instead, it uses a less error-prone, built-in class functionality called <strong>iterators</strong>. Let's say you just finished writing a section of a chapter and wanted some applause for your effort. We could write a program to do that for you:</p>
 
-<div class="highlight">
-<pre><span class="mi">3</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> 
+<div class="highlight"><pre><span class="mi">3</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> 
   <span class="nb">print</span> <span class="s2">"Clap! "</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Run the program from the terminal and it will produce:</p>
 
-<div class="highlight">
-<pre><span class="go">Clap! Clap! Clap!</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="go">Clap! Clap! Clap!</span>
+</pre></div>
 
 <p>There, now you and your computer just shared a special moment. A pretty simple block of code, right? You could read what the program is doing even if you didn't understand a single line of Ruby: print "Clap!" three times, no more, no less. Simplicity.</p>
 
 <p>We can also use iterators to loop through ranges. Let's return to our number counter example above and write an iterator to print numbers between one and five:</p>
 
-<div class="highlight">
-<pre><span class="mi">0</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+<div class="highlight"><pre><span class="mi">0</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
   <span class="nb">print</span> <span class="n">x</span><span class="p">,</span> <span class="s2">" "</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The most basic iterator in Ruby is simply <code>loop</code>, which will run the block forever until you break out of the loop:</p>
 
-<div class="highlight">
-<pre><span class="kp">loop</span> <span class="k">do</span>
+<div class="highlight"><pre><span class="kp">loop</span> <span class="k">do</span>
   <span class="nb">print</span> <span class="s2">"85098357-198058903028340jj23u0280234itj3"</span>
   <span class="c1"># it's just like the Matrix!</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Hit CTRL+C to break the loop.</p>
 
@@ -467,8 +401,7 @@
 
 <p>Blocks contains a chunk of code normally enclosed between braces or within <code>do</code> and <code>end</code>. The prevailing style is to use the braces for blocks that fit on a single line and <code>do . . . end</code> for multiple lines. Blocks are called only after the invocation of some method. We could, for example, write a program that sums the squares of numbers inside of an array:</p>
 
-<div class="highlight">
-<pre><span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="o">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="o">].</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">value</span><span class="o">|</span>
   <span class="n">square</span> <span class="o">==</span> <span class="n">value</span> <span class="o">*</span> <span class="n">value</span>
@@ -476,9 +409,7 @@
 <span class="k">end</span> 
 
 <span class="nb">puts</span> <span class="n">sum</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>In this example, the block is being called by the <code>each</code> method once for each element in the array. The element passed as the parameter is <code>value</code>. Note also that although <code>sum</code> is defined outside of the block, it is also being modified within the block and then passed on to <code>puts</code>. If a variable is inside a block with the same name as a variable outside of the block the two are the same, but if a variable appears only inside a block than the variable is local to the block.</p>
 
@@ -501,62 +432,49 @@
 
 <p>Arrays are initiated between square brackets. Inside of an array you can access individual elements by calling upon its index. Note that Ruby begins its index with zero.</p>
 
-<div class="highlight">
-<pre><span class="n">my_array</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"Ambrose"</span><span class="p">,</span> <span class="s2">"White"</span><span class="p">,</span> <span class="s2">"Worster"</span><span class="o">]</span>
+<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"Ambrose"</span><span class="p">,</span> <span class="s2">"White"</span><span class="p">,</span> <span class="s2">"Worster"</span><span class="o">]</span>
 
 <span class="c1"># print the items in the array by calling</span>
 <span class="c1"># their index</span>
 <span class="nb">puts</span> <span class="n">my_array</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="c1"># =&gt; Ambrose</span>
 <span class="nb">puts</span> <span class="n">my_array</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="c1"># =&gt; White</span>
 <span class="nb">puts</span> <span class="n">my_array</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="c1"># =&gt; Worster</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>There is no practical limit as to how many things an array can hold. And, as mentioned above, there is no problem with mixing types of array elements. You could just as easily write:</p>
 
-<div class="highlight">
-<pre><span class="n">my_array</span> <span class="o">=</span> <span class="o">[</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">"books"</span><span class="p">,</span> <span class="mi">3</span><span class="o">.</span><span class="mi">14</span> <span class="o">]</span>
+<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="o">[</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">"books"</span><span class="p">,</span> <span class="mi">3</span><span class="o">.</span><span class="mi">14</span> <span class="o">]</span>
 <span class="nb">puts</span> <span class="n">my_array</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="c1"># =&gt; 42</span>
 <span class="nb">puts</span> <span class="n">my_array</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="c1"># =&gt; books</span>
 <span class="nb">puts</span> <span class="n">my_array</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="c1"># =&gt; 3.14</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Note that strings must be enclosed in single or double quotes.</p>
 
 <p>Arrays also include two operators. The first is <code>pop</code>, which removes the item on the right side (or, the end of the array). The other is <code>shift</code>, which removes items on the left side (beginning) of the array.</p>
 
-<div class="highlight">
-<pre><span class="n">my_array</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"Ambrose"</span><span class="p">,</span> <span class="s2">"White"</span><span class="p">,</span> <span class="s2">"Worster"</span><span class="o">]</span>
+<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"Ambrose"</span><span class="p">,</span> <span class="s2">"White"</span><span class="p">,</span> <span class="s2">"Worster"</span><span class="o">]</span>
 
 <span class="n">array_change</span> <span class="o">=</span> <span class="nb">puts</span> <span class="n">my_array</span><span class="o">.</span><span class="n">pop</span>
 <span class="n">array_change2</span> <span class="o">=</span> <span class="nb">puts</span> <span class="n">my_array</span><span class="o">.</span><span class="n">shift</span>
 
 <span class="nb">puts</span> <span class="n">array_change</span> <span class="c1"># =&gt; Worster</span>
 <span class="nb">puts</span> <span class="n">array_change2</span> <span class="c1"># =&gt; Ambrose</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>We can also add things to the array by using the <code>push</code> and <code>unshift</code> methods. The <code>push</code> method adds items to the end (or right side of) the array while the <code>unshift</code> method adds things to the beginning of (or left side of) the array.</p>
 
-<div class="highlight">
-<pre><span class="n">my_array</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"Ambrose"</span><span class="p">,</span> <span class="s2">"White"</span><span class="p">,</span> <span class="s2">"Worster"</span><span class="o">]</span>
+<div class="highlight"><pre><span class="n">my_array</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"Ambrose"</span><span class="p">,</span> <span class="s2">"White"</span><span class="p">,</span> <span class="s2">"Worster"</span><span class="o">]</span>
 
 <span class="n">array_new</span> <span class="o">=</span> <span class="n">my_array</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">"Ulrich"</span><span class="p">)</span>
 <span class="n">array_new</span> <span class="o">=</span> <span class="n">my_array</span><span class="o">.</span><span class="n">unshift</span><span class="p">(</span><span class="s2">"West"</span><span class="p">)</span>
 
 <span class="nb">puts</span> <span class="s2">"The array contains </span><span class="si">#{</span><span class="n">array_new</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Arrays can also be created much more simply by using the shortcut <code>%w</code>, which removes the need for all those quotes and commas:</p>
 
-<div class="highlight">
-<pre><span class="c1"># array-shortcut.rb</span>
+<div class="highlight"><pre><span class="c1"># array-shortcut.rb</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="o">[</span> <span class="s1">'Apple'</span><span class="p">,</span> <span class="s1">'Microsoft'</span><span class="p">,</span> <span class="s1">'Linux'</span><span class="p">,</span> <span class="s1">'Solaris'</span> <span class="o">]</span>
 <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="c1"># =&gt; "Apple"</span>
@@ -567,23 +485,18 @@
 <span class="n">a</span> <span class="o">=</span> <span class="sx">%w{ Apple Microsoft Linux Solaris }</span>
 <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="c1"># =&gt; "Apple"</span>
 <span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="c1"># =&gt; "Microsoft"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>We can create an empty array by calling <code>Array.new</code>. The array is defining what objects must look like. Remember that every class has a special method called <code>new</code>, and <code>new</code> is a special method called a <strong>constructor</strong>. By calling <code>Array.new</code>, we're asking Ruby to create an empty object. So, lets create an empty array and populate it with data:</p>
 
-<div class="highlight">
-<pre><span class="n">authors</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span>
+<div class="highlight"><pre><span class="n">authors</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span>
 
 <span class="n">authors</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">"Hemingway"</span><span class="p">)</span>
 <span class="n">authors</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">"Faulkner"</span><span class="p">)</span>
 <span class="n">authors</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="s2">"Whitman"</span><span class="p">)</span>
 
 <span class="nb">puts</span> <span class="n">authors</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The program should print the contents of the array to the screen.</p>
 
@@ -593,36 +506,27 @@
 
 <p>So, lets say we wanted to map author ratings. The hash setup would look like this:</p>
 
-<div class="highlight">
-<pre><span class="n">authors</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="n">authors</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Hemingway'</span>   <span class="o">=&gt;</span>  <span class="s1">'five_stars'</span><span class="p">,</span>
   <span class="s1">'Stephenson'</span>  <span class="o">=&gt;</span>  <span class="s1">'four_stars'</span><span class="p">,</span>
   <span class="s1">'Heppler'</span>    <span class="o">=&gt;</span>  <span class="s1">'one_star'</span><span class="p">,</span>
   <span class="s1">'Whitman'</span>    <span class="o">=&gt;</span>  <span class="s1">'five_stars'</span><span class="p">,</span>
   <span class="c1"># key      =&gt;  value</span>
 <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The item to the left of <code>=&gt;</code> is the <strong>key</strong> while item on the right is its corresponding <strong>value</strong>. Keys in a hash must be unique (we cannot have two "Stephenson," for example) but values can repeat. Hashes are indexed with the same square brackets as arrays. To print results from the above hash, we could write:</p>
 
-<div class="highlight">
-<pre><span class="nb">puts</span> <span class="n">authors</span><span class="o">[</span><span class="s1">'Whitman'</span><span class="o">]</span> <span class="c1"># =&gt; five_stars</span>
+<div class="highlight"><pre><span class="nb">puts</span> <span class="n">authors</span><span class="o">[</span><span class="s1">'Whitman'</span><span class="o">]</span> <span class="c1"># =&gt; five_stars</span>
 <span class="nb">puts</span> <span class="n">authors</span><span class="o">[</span><span class="s1">'Stephenson'</span><span class="o">]</span> <span class="c1"># =&gt; four_stars</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Also, like arrays, you can create an empty hash with <code>Hash.new</code> and inject data into it. For example:</p>
 
-<div class="highlight">
-<pre><span class="n">my_hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">my_hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 
 <span class="nb">hash</span><span class="o">[</span><span class="s1">'Dickenson'</span><span class="o">]</span> <span class="o">=</span> <span class="s1">'three_stars'</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Hashes have one significant advantage over arrays: they use any object as an index. And, if you're using Ruby 1.9, Ruby also remembers the order in which you add items to the hash. When you iterate over entries, Ruby will return them in the correct order. Hashes are a frequently used data structure in Ruby.</p>
 
@@ -649,19 +553,15 @@
 
 <p>Imagine we have a primary source document we would like to read. You can <a href="https://github.com/hepplerj/rubyist-historian/blob/master/04-ArraysHashes/letter.txt">download this file</a> from Github to your local disk for something to work with (this is a letter from a Civil War soldier). We're going to ask Ruby to read the file and print the results to the screen:</p>
 
-<div class="highlight">
-<pre><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"letter.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+<div class="highlight"><pre><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"letter.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
   <span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span>
   <span class="nb">puts</span> <span class="n">lines</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>We could also print out specific lines of the array:</p>
 
-<div class="highlight">
-<pre><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"letter.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="c1"># open the file and assign to variable 'file'</span>
+<div class="highlight"><pre><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"letter.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="c1"># open the file and assign to variable 'file'</span>
 
   <span class="n">line_array</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span>
 
@@ -672,25 +572,20 @@
 
 <span class="c1"># Since we used the "r" specifier, Ruby will automatically close the</span>
 <span class="c1"># file. Otherwise, you will need to exit the file using file.close().</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The program will print the specified lines to the screen.</p>
 
 <p>We can also write to files using <code>File.new</code>:</p>
 
-<div class="highlight">
-<pre><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"my_file.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"my_file.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span>
 
 <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Hello, world!"</span><span class="p">)</span>
 <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"I'm learning Ruby!"</span><span class="p">)</span>
 
 <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>After running the program. it will will create the file <code>my_file</code> in the directory you are working in. The file should contain the contents we wrote.</p>
 
@@ -711,16 +606,12 @@
 
 <p>A variable that is in all caps cannot be reassigned anywhere in the program. For example, if you were writing a program that used Pi in its calculations, you wouldn't want the program (or yourself or another programmer) to accidentally override the value of Pi. To prevent this, Ruby allows for constant variables. We would simply write this in all caps:</p>
 
-<div class="highlight">
-<pre><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">141592</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">141592</span>
+</pre></div>
 
 <p>We can now use the variable anywhere in the program without fear that it will be overridden by another variable. For example, we could use Pi to calculate the area and circumference of a circle: </p>
 
-<div class="highlight">
-<pre><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">141592</span>
+<div class="highlight"><pre><span class="no">PI</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">141592</span>
 
 <span class="nb">puts</span> <span class="s2">"Enter a radius to calculate: "</span>
 <span class="n">radius</span> <span class="o">=</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">to_f</span>
@@ -732,26 +623,20 @@
 <span class="n">circ</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="no">PI</span>
 <span class="n">circ</span> <span class="o">=</span> <span class="s2">"%.4f"</span> <span class="o">%</span> <span class="n">circ</span>
 <span class="nb">puts</span> <span class="s2">"The circumference of the circle is: </span><span class="si">#{</span><span class="n">circ</span><span class="si">}</span><span class="s2">"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3>External Libraries</h3>
 
 <p>In the last section we talked about modules and the ability to avoid namespace conflicts. The other great thing about modules is there are literally thousands of modules that exist outside the Ruby system, written and (theoretically) tested by other programmers, but available for your use. You probably saw an early version of this when we first talked about modules and the use of <code>Trig.rb</code> and <code>Morals.rb</code>. <strong>Libraries</strong> operate by prefacing the call with <code>require</code> and then tell Ruby what we want included:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'rubygems'</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'rubygems'</span>
+</pre></div>
 
 <p>How do we know what's available to us as programmers? By consulting either <a href="http://rubyforge.org/">RubyForge</a> or the <a href="http://raa.ruby-lang.org/">Ruby Application Archive</a> (see <a href="http://www.ruby-lang.org/en/libraries/">Ruby-Lang.org</a> for more). To use the libraries, you'll need to have a copy on your local system. Many Ruby libraries are conveniently packaged under <a href="http://docs.rubygems.org/">Ruby Gems</a> and provides a standard formate for distributing Ruby programs and libraries. Follow the <a href="http://www.ruby-lang.org/en/libraries/">instructions on Ruby-Lang.org</a> on how to download and install Ruby Gems.</p>
 
 <p>Perhaps one of the most useful libraries that Prof. Ramsay pointed our class to was the <code><a href="http://deveiate.org/projects/Linguistics/">linguistics</a></code> library:</p>
 
-<div class="highlight">
-<pre><span class="c1"># linguistics.rb</span>
+<div class="highlight"><pre><span class="c1"># linguistics.rb</span>
 
 <span class="nb">require</span> <span class="s1">'rubygems'</span>
 <span class="nb">require</span> <span class="s1">'linguistics'</span>
@@ -761,37 +646,26 @@
 
 <span class="nb">puts</span> <span class="mi">185934538450</span><span class="o">.</span><span class="n">en</span><span class="o">.</span><span class="n">numwords</span>
 <span class="c1"># =&gt; one hundred and eighty-five billion, nine hundred and thirty-four million, five hundred and thirty-eight thousand, four hundred and fifty</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Or maybe you want to know what the plural of "goose" is:</p>
 
-<div class="highlight">
-<pre><span class="no">Linguistics</span><span class="o">::</span><span class="n">use</span><span class="p">(</span> <span class="ss">:en</span> <span class="p">)</span>
+<div class="highlight"><pre><span class="no">Linguistics</span><span class="o">::</span><span class="n">use</span><span class="p">(</span> <span class="ss">:en</span> <span class="p">)</span>
 <span class="s2">"goose"</span><span class="o">.</span><span class="n">en</span><span class="o">.</span><span class="n">plural</span>
 <span class="c1"># =&gt; "geese"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Or maybe we have an array of farm animals:</p>
 
-<div class="highlight">
-<pre><span class="no">Linguistics</span><span class="o">::</span><span class="n">use</span><span class="p">(</span> <span class="ss">:en</span> <span class="p">)</span>
+<div class="highlight"><pre><span class="no">Linguistics</span><span class="o">::</span><span class="n">use</span><span class="p">(</span> <span class="ss">:en</span> <span class="p">)</span>
 <span class="n">animals</span> <span class="o">=</span> <span class="sx">%w{dog cow ox chicken goose goat cow dog rooster llama pig goat dog cat cat dog cow goat goose goose ox alpaca}</span>
 <span class="nb">puts</span> <span class="s2">"The farm has: "</span> <span class="o">+</span> <span class="n">animals</span><span class="o">.</span><span class="n">en</span><span class="o">.</span><span class="n">conjunction</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>This will print: </p>
 
-<div class="highlight">
-<pre><span class="no">The</span> <span class="n">farm</span> <span class="n">has</span><span class="p">:</span> <span class="n">four</span> <span class="n">dogs</span><span class="p">,</span> <span class="n">three</span> <span class="n">cows</span><span class="p">,</span> <span class="n">three</span> <span class="n">goats</span><span class="p">,</span> <span class="n">two</span> <span class="n">oxen</span><span class="p">,</span> <span class="n">two</span> <span class="n">geese</span><span class="p">,</span> <span class="n">two</span> <span class="n">cats</span><span class="p">,</span> <span class="n">a</span> <span class="n">chicken</span><span class="p">,</span> <span class="n">a</span> <span class="n">rooster</span><span class="p">,</span> <span class="n">a</span> <span class="n">llama</span><span class="p">,</span> <span class="n">a</span> <span class="n">pig</span><span class="p">,</span> <span class="ow">and</span> <span class="n">an</span> <span class="n">alpaca</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="no">The</span> <span class="n">farm</span> <span class="n">has</span><span class="p">:</span> <span class="n">four</span> <span class="n">dogs</span><span class="p">,</span> <span class="n">three</span> <span class="n">cows</span><span class="p">,</span> <span class="n">three</span> <span class="n">goats</span><span class="p">,</span> <span class="n">two</span> <span class="n">oxen</span><span class="p">,</span> <span class="n">two</span> <span class="n">geese</span><span class="p">,</span> <span class="n">two</span> <span class="n">cats</span><span class="p">,</span> <span class="n">a</span> <span class="n">chicken</span><span class="p">,</span> <span class="n">a</span> <span class="n">rooster</span><span class="p">,</span> <span class="n">a</span> <span class="n">llama</span><span class="p">,</span> <span class="n">a</span> <span class="n">pig</span><span class="p">,</span> <span class="ow">and</span> <span class="n">an</span> <span class="n">alpaca</span>
+</pre></div>
 
 <p>You can <a href="http://deveiate.org/projects/Linguistics/wiki/English">do a lot</a> with <code>linguistics</code>.</p>
 
@@ -801,8 +675,7 @@
 
 <p>Comment your code and comment it well. We've already seen some of this in Ruby. Commenting a single line in Ruby starts with a <code>#</code>. But we can also write multi-line comments by putting our text between <code>=begin</code> and <code>=end</code>.</p>
 
-<div class="highlight">
-<pre><span class="c1"># this is a single line comment</span>
+<div class="highlight"><pre><span class="c1"># this is a single line comment</span>
 
 <span class="cm">=begin</span>
 <span class="cm">Multi-line comment</span>
@@ -811,9 +684,7 @@
 
 <span class="cm">Yet another</span>
 <span class="cm">=end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>I frequently use single line comments for explaining what chunks of code are doing, while multi-line commenting is often useful for removing parts of code without actually deleting it. This makes debugging much easier. Be sure to use your commenting wisely by explaining what the code doesn't tell you. When you define functions or classes or variables, it should be fairly clear what's going on. But commenting on why you made the choices you made that will help you or another programmer better understand the code is worth including. Remember: programming should be as much about readability as it is about its functionality. Comment even if its code only you will be seeing.</p>
 
@@ -875,8 +746,7 @@
 
 <p>One potential way to write our word frequency program is as such: </p>
 
-<div class="highlight">
-<pre><span class="c1"># frequency.rb</span>
+<div class="highlight"><pre><span class="c1"># frequency.rb</span>
 
 <span class="k">def</span> <span class="nf">separation</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
   <span class="n">string</span><span class="p">()</span><span class="o">.</span><span class="n">downcase</span><span class="p">()</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/[\w']+/</span><span class="p">)</span> <span class="c1"># downcase and strip out white space</span>
@@ -898,64 +768,49 @@
 <span class="n">sorted_list</span> <span class="o">=</span> <span class="n">number</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="p">,</span> <span class="n">count</span><span class="o">|</span> <span class="n">count</span> <span class="p">}</span>
 
 <span class="n">most_to_fewest</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="p">,</span> <span class="n">count</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">count</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">word</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Our program takes in a file (<code>text</code>) and sends the file into our <code>separation</code> method to convert everything into a string, downcase the words for normalization, and scan for whitespace (hence the regex code <code>/[\w']+/</code>). Once the program read the file and converted the text into individual words, it sends the file into our <code>word_count</code> method and enters the file into a hash. Inside of <code>word_count</code>, the file counts the words and for each instance of a word adds an increment until the file has finished processing. We return number and call the <code>sort</code> method and assign sort values (<code>word</code> and <code>count</code>) and print our results.</p>
 
 <p>There are certainly several ways to achieve the results we're after. If you have your own word frequency generator that you're comfortable working with, go ahead and use it. I'll be using my own code:</p>
 
-<div class="highlight">
-<pre><span class="c1"># frequency.rb</span>
+<div class="highlight"><pre><span class="c1"># frequency.rb</span>
 
 <span class="n">filename</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"text.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">downcase</span><span class="p">()</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/[\w']+/</span><span class="p">)</span>
 <span class="n">frequency</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">filename</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="n">frequency</span><span class="o">[</span><span class="n">word</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="p">}</span>
 <span class="n">frequency</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">y</span> <span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">f</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>You should now have a working word frequency generator. However, we want to be able to read HTML files from the web; this will make the program much more useful. To do this we're going to import a Ruby library called <code>open-uri</code> and use its methods to fetch web data. Let's first look at how we achieve the ability to have Ruby read web files before we integrate it into our frequency program. I'll be using an XML newspaper file from one of my digital history projects -- feel free to use the same or select your own file:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="n">uri_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="nb">puts</span> <span class="n">uri_file</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The above file will read the URL and print to the screen. But you'll notice something that will inconvenience us if we try and generate a frequency: the output includes the HTML tags. We need to get rid of all that junk. There are a couple of ways to do that, but we're going to return to our good friend regex to look for HTML tags and strip out everything we don't want. We'll use the <code>gsub</code> method and <a href="http://etext.lib.virginia.edu/services/helpsheets/unix/regex.html">regular expressions</a> to substitute HTML tags with empty lines. We'll also use it to strip out punctuation marks and other HTML formatting (such as <code>"</code>). Make a small edit to your file:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="c1"># read a URL, strip out HTML tags, and assign the file to a variable</span>
 <span class="n">uri_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&lt;\/?[^&gt;]*&gt;/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;quot;*/</span><span class="p">,</span> <span class="s2">"</span><span class="se">\"</span><span class="s2">"</span><span class="o">/</span><span class="p">)</span>
 
 <span class="nb">puts</span> <span class="n">uri_file</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>You should now be seeing just the text of the webpage we are having Ruby read. Pretty cool, huh? But we're not quite where we want to be yet. Let's also get rid of punctuation and numbers as well as downcase all the text so we have a consistent word base:</p>
 
-<div class="highlight">
-<pre><span class="n">uri_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&lt;\/?[^&gt;]*&gt;/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;quot;*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[0-9]*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[(,?!\'":.)]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span>
+<div class="highlight"><pre><span class="n">uri_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&lt;\/?[^&gt;]*&gt;/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;quot;*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[0-9]*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[(,?!\'":.)]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span>
 
 <span class="nb">puts</span> <span class="n">uri_file</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Now let's add this to our frequency generator.</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="n">uri_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&lt;\/?[^&gt;]*&gt;/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&lt;\/?[^&gt;]*&gt;/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;quot;*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[0-9]*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[(,?!\'":.)]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span>
 
@@ -963,44 +818,35 @@
 <span class="n">frequency</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">filename</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="n">frequency</span><span class="o">[</span><span class="n">word</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="p">}</span>
 <span class="n">frequency</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">y</span> <span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">f</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Ok, run <code>ruby frequency.rb</code> and we should . . . wait, what happened? If you run this, you should get an error. Time to debug!</p>
 
 <p>The issue is we're not reading a file, we're reading the contents of a variable. So, there's no need for the <code>File.new</code> class. We can get rid of that. We also need to update the <code>each</code> method to read our URL variable:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="n">uri_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&lt;\/?[^&gt;]*&gt;/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;quot;*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[0-9]*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[(,?!\'":.)]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span>
 
 <span class="n">frequency</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">uri_file</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="n">frequency</span><span class="o">[</span><span class="n">word</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="p">}</span>
 <span class="n">frequency</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">y</span> <span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">f</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>All right, now we can run this. Type in <code>ruby frequency.rb</code> and . . . whoh. Something still isn't right. You should be outputting some sort of frequency counter, but the program is counting lines rather than individual words. We forgot to split the words apart. So, we'll add the <code>split</code> method:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="n">uri_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&lt;\/?[^&gt;]*&gt;/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;quot;*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[0-9]*/</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/[(,?!\'":.)]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">)</span>
 
 <span class="n">frequency</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">uri_file</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="n">frequency</span><span class="o">[</span><span class="n">word</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="p">}</span>
 <span class="n">frequency</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">y</span> <span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">f</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Before we move on, let's clean things up a bit. Let's move our URL reader into a method and rewrite some code. The method should look like this:</p>
 
-<div class="highlight">
-<pre><span class="k">def</span> <span class="nf">readFile</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">readFile</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
   <span class="c1"># Strip out HTML tags, alphanumeric characters, and punctuation, lower-case </span>
   <span class="c1"># all words, and split the words apart </span>
@@ -1009,23 +855,17 @@
   <span class="k">return</span> <span class="n">uri_file</span>
 
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Now we can rewrite the URL input as:</p>
 
-<div class="highlight">
-<pre><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span>
+<div class="highlight"><pre><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml"</span>
 <span class="n">uri_file</span> <span class="o">=</span> <span class="n">readFile</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Your file should now look similar to this:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="k">def</span> <span class="nf">readFile</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -1047,14 +887,11 @@
 <span class="n">frequency</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">uri_file</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="n">frequency</span><span class="o">[</span><span class="n">word</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="p">}</span>
 <span class="n">frequency</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">y</span> <span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">f</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>We're also going to add a new method of inputting files by using Ruby's ARGV method. ARGV is a global array that allows us to pass command-line arguments after the filename. So, we'll rewrite the code above a bit:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="k">def</span> <span class="nf">readFile</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -1076,36 +913,27 @@
 <span class="n">frequency</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">uri_file</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="n">frequency</span><span class="o">[</span><span class="n">word</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="p">}</span>
 <span class="n">frequency</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">y</span> <span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">f</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>You should now be able to run <code>ruby frequency.rb <a href="http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml">http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml</a></code> in the command line. And there we have it! A working word frequency generator that can read HTML files or local files. This may be as far as you want to go, but if you're like me, you'd love to have a program that not only generates frequencies but will also output a file that you can use. In my case, when doing digital scholarship, I want files that can be read by a browser. So, we're going to have the frequency list export as HTML. For this, we'll be bringing back in our <code>File</code> I/O method:</p>
 
-<div class="highlight">
-<pre><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"output.html"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">output</span><span class="o">|</span>
+<div class="highlight"><pre><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"output.html"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">output</span><span class="o">|</span>
     <span class="n">frequency</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">uri_file</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="n">frequency</span><span class="o">[</span><span class="n">word</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="p">}</span>
     <span class="n">frequency</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">y</span> <span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">f</span><span class="o">|</span> 
       <span class="n">output</span><span class="o">.</span><span class="n">write</span> <span class="s2">"&lt;p&gt;</span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2">&lt;/p&gt;</span><span class="se">\n</span><span class="s2">"</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Let's also let the user know where the file was exported. Add to the end of the file:</p>
 
-<div class="highlight">
-<pre><span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">File exported to </span><span class="si">#{</span><span class="no">Dir</span><span class="o">.</span><span class="n">pwd</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">"</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">File exported to </span><span class="si">#{</span><span class="no">Dir</span><span class="o">.</span><span class="n">pwd</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">"</span>
+</pre></div>
 
 <p>So, you're program should now look like:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="k">def</span> <span class="nf">readFile</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -1133,9 +961,7 @@
 <span class="k">end</span>
 
 <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">File exported to </span><span class="si">#{</span><span class="no">Dir</span><span class="o">.</span><span class="n">pwd</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>You should now be set to write to the command line <code>ruby frequency.rb <a href="http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml">http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml</a></code>, which will compute the frequencies and output the results to an HTML file.</p>
 
@@ -1143,16 +969,12 @@
 
 <p>We'll start by creating an array of common words. Let's also make it a constant variable so we don't have to worry about override problems. Remember that we stripped out punctuation, so we need to maintain the words without apostrophes:</p>
 
-<div class="highlight">
-<pre><span class="no">STOPWORDS</span> <span class="o">=</span> <span class="sx">%w{a about above across after again against all am an and any are arent as at be because been before being below between both but by cant cannot could couldnt did didnt do does doesnt doing dont down during each few for form further had hadnt has hasnt have havent having he her here heres hers herself him himself his how i id ill im ive if in into is isnt it its itself lets me more most mustnt my myself my myself no nor not of off on once only or other ought our ours ourselves out over own same shant she should shouldnt so some such than that the their theirs them themselves then there these they this those through to too under until up very was we were what when where which while who why with would you your yours yourself yourselves}</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="no">STOPWORDS</span> <span class="o">=</span> <span class="sx">%w{a about above across after again against all am an and any are arent as at be because been before being below between both but by cant cannot could couldnt did didnt do does doesnt doing dont down during each few for form further had hadnt has hasnt have havent having he her here heres hers herself him himself his how i id ill im ive if in into is isnt it its itself lets me more most mustnt my myself my myself no nor not of off on once only or other ought our ours ourselves out over own same shant she should shouldnt so some such than that the their theirs them themselves then there these they this those through to too under until up very was we were what when where which while who why with would you your yours yourself yourselves}</span>
+</pre></div>
 
 <p>Now we'll add this to our <code>readFile</code> method and tell Ruby to remove words that appear in the array:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'open-uri'</span>
 
 <span class="no">STOPWORDS</span> <span class="o">=</span> <span class="sx">%w{a about above across after again against all am an and any are arent as at be because been before being below between both but by cant cannot could couldnt did didnt do does doesnt doing dont down during each few for form further had hadnt has hasnt have havent having he her here heres hers herself him himself his how i id ill im ive if in into is isnt it its itself lets me more most mustnt my myself my myself no nor not of off on once only or other ought our ours ourselves out over own same shant she should shouldnt so some such than that the their theirs them themselves then there these they this those through to too under until up very was we were what when where which while who why with would you your yours yourself yourselves}</span>
 
@@ -1165,16 +987,13 @@
   <span class="k">return</span> <span class="n">uri_file</span>
 
 <span class="k">end</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>The program should now remove words that appear inside of the <code>stopwords</code> array. Now we have something a little more useful to us.</p>
 
 <p>So, the program in its entirety should now look like:</p>
 
-<div class="highlight">
-<pre><span class="c1">#!/usr/bin/ruby -w</span>
+<div class="highlight"><pre><span class="c1">#!/usr/bin/ruby -w</span>
 
 <span class="c1"># FREQr.rb</span>
 <span class="c1">#</span>
@@ -1215,9 +1034,7 @@
 
 <span class="c1"># Give the user an exported-to message</span>
 <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">File exported to </span><span class="si">#{</span><span class="no">Dir</span><span class="o">.</span><span class="n">pwd</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Simply type in <code>ruby frequency.rb <a href="http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml">http://www.framingredpower.org/archive/newspapers/frp.wapo.19721102.xml</a></code> and the program will output an HTML file and confirm the successful completion of the program. Congrats! You now have your first full Ruby program. Do some hacking on this program. Add a function or feature to it or optimize the code and see what you can accomplish. Perhaps, for example, you want another method so you can output an HTML file that generates keywords in context or a word cloud. Or, if you're really ambitious, maybe you can learn about <a href="http://rubyonrails.org/">Ruby on Rails</a> and make this program run as a webpage rather than the command line.</p>
 
@@ -1240,14 +1057,14 @@
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
           <script type="text/javascript">
             try {
-              var pageTracker = _gat._getTracker("<script type="text/javascript">    var _gaq = _gaq || [];   _gaq.push(['_setAccount', 'UA-31992505-1']);   _gaq.push(['_trackPageview']);    (function() {     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);   })();  </script>");
+              var pageTracker = _gat._getTracker("&lt;script type=&quot;text/javascript&quot;&gt;    var _gaq = _gaq || [];   _gaq.push(['_setAccount', 'UA-31992505-1']);   _gaq.push(['_trackPageview']);    (function() {     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);   })();  &lt;/script&gt;");
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
